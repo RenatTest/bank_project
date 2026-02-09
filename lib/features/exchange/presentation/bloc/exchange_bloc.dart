@@ -1,7 +1,7 @@
 import 'package:bank_project/features/exchange/data/repository/exchange_repository.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_event.dart';
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExchangeBloc extends Bloc<ExchangeEvent, ExchangeState> {
   ExchangeBloc(this.exchangeRepository) : super(ExchangeStateInitial()) {

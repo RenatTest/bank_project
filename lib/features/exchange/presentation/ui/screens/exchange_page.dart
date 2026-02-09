@@ -1,5 +1,8 @@
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_bloc.dart';
+import 'package:bank_project/features/exchange/presentation/bloc/exchange_event.dart';
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_state.dart';
+import 'package:bank_project/features/exchange/presentation/ui/widgets/exchange_exception_text.dart';
+import 'package:bank_project/features/exchange/presentation/ui/widgets/exchange_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +23,13 @@ class ExchangePage extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => context.pop(),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh, color: Colors.white),
+            onPressed: () =>
+                context.read<ExchangeBloc>().add(ExchangeEventLoad()),
+          ),
+        ],
       ),
       body: BlocBuilder<ExchangeBloc, ExchangeState>(
         builder: (context, state) {
@@ -32,12 +42,16 @@ class ExchangePage extends StatelessWidget {
             );
           }
           if (state is ExchangeStateError) {
-            return Center(child: Text(state.exception.toString()));
+            return ExchangeExceptionText(
+              exceptionText: state.exception.toString(),
+            );
           }
 
           if (state is ExchangeStateLoaded) {
             if (state.exchange.isEmpty) {
-              return Center(child: Text('No exchange info found'));
+              return ExchangeExceptionText(
+                exceptionText: 'No exchange info found',
+              );
             }
             return Center(
               child: Padding(
@@ -56,40 +70,11 @@ class ExchangePage extends StatelessWidget {
                           state.exchange[index].currencyNameShort;
                       final date = state.exchange[index].date;
 
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 5,
-                        children: [
-                          Expanded(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 5,
-                              children: [
-                                Text(
-                                  currencyNameShort,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                Flexible(
-                                  child: Text(
-                                    currencyName,
-                                    style: TextStyle(color: Colors.white),
-                                    softWrap: true,
-                                    overflow: TextOverflow.visible,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          Row(
-                            spacing: 10,
-                            children: [
-                              Text(rate, style: TextStyle(color: Colors.white)),
-                              Text(date, style: TextStyle(color: Colors.white)),
-                            ],
-                          ),
-                        ],
+                      return ExchangeItem(
+                        currencyName: currencyName,
+                        currencyNameShort: currencyNameShort,
+                        rate: rate,
+                        date: date,
                       );
                     },
                   ),

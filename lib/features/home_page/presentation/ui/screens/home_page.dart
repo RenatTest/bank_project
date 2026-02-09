@@ -1,3 +1,4 @@
+import 'package:bank_project/features/home_page/presentation/ui/widgets/home_page_button.dart';
 import 'package:bank_project/router/page_names.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,43 +29,13 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            ElevatedButton(
+            HomePageButton(
+              buttonText: 'Exchange',
               onPressed: () => context.goNamed(PageNames.exchange),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                side: BorderSide(width: 2.0, color: Colors.white),
-              ),
-              child: Text(
-                'Exchange',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
             ),
-            ElevatedButton(
+            HomePageButton(
+              buttonText: 'Settings',
               onPressed: () => context.goNamed(PageNames.settings),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                side: BorderSide(width: 2.0, color: Colors.white),
-              ),
-              child: Text(
-                'Settings',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
             ),
           ],
         ),
