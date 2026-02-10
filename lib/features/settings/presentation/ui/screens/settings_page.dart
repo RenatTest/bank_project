@@ -20,9 +20,9 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: SizedBox(
-          width: 240,
-          child: SwitchListTile(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 240),
+          child: SwitchListTile.adaptive(
             title: const Text('Night mode'),
             value: context.watch<ThemeCubit>().state == ThemeMode.dark,
             onChanged: (_) {
