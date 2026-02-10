@@ -12,20 +12,22 @@ class HomePageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        side: BorderSide(width: 2.0, color: Colors.white),
+        side: BorderSide(width: 2.0, color: color),
       ),
       child: Text(
         buttonText,
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: color,
         ),
       ),
     );

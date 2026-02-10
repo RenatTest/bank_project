@@ -7,6 +7,8 @@ class ExchangeItemText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(itemText, style: TextStyle(color: Colors.white));
+    final color = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;
+
+    return Text(itemText, style: TextStyle(color: color));
   }
 }

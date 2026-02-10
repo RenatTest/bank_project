@@ -17,6 +17,8 @@ class ExchangeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +33,7 @@ class ExchangeItem extends StatelessWidget {
               Flexible(
                 child: Text(
                   currencyName,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: color),
                   softWrap: true,
                   overflow: TextOverflow.visible,
                 ),
