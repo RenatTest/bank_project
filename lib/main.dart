@@ -1,10 +1,13 @@
 import 'package:bank_project/di/di.dart';
+import 'package:bank_project/features/home_page/cubit/theme_cubit.dart';
 import 'package:bank_project/router/app_router.dart';
+import 'package:bank_project/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   initDI();
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (_) => ThemeCubit(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,9 +15,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: router,
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeMode,
+        );
+      },
     );
   }
 }

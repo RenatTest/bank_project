@@ -8,11 +8,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;
+
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text('Bank Project', style: TextStyle(color: Colors.white)),
+        title: Text('Bank Project', style: TextStyle(color: color)),
         centerTitle: true,
       ),
       body: Center(
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w600,
-                color: Colors.white,
+                color: color,
               ),
             ),
             HomePageButton(
