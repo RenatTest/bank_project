@@ -3,6 +3,8 @@ import 'package:bank_project/features/exchange/presentation/bloc/exchange_event.
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_state.dart';
 import 'package:bank_project/features/exchange/presentation/ui/widgets/exchange_exception_text.dart';
 import 'package:bank_project/features/exchange/presentation/ui/widgets/exchange_item.dart';
+import 'package:bank_project/features/home_page/cubit/locale_cubit.dart';
+import 'package:bank_project/l10n/app_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +16,13 @@ class ExchangePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black;
+    final locale = context.watch<LocaleCubit>().state.languageCode;
+    final text = AppLocalization(locale);
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text('Exchange Page', style: TextStyle(color: color)),
+        title: Text(text.exchangeRates, style: TextStyle(color: color)),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: color),
