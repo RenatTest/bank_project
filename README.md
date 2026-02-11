@@ -74,5 +74,5 @@ lib
 - Navigation - go_router
 - State Management - flutter_bloc (bloc, cubit)
 - DI - get_it
-- API - https://min-api.cryptocompare.com
+- API - https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json
 - Networking - Dio + Retrofit
