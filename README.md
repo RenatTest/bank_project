@@ -17,6 +17,12 @@ lib
 ├── di
 │   └── di.dart
 ├── features
+│   ├── crypto
+│   │   └── presentation
+│   │       └── ui
+│   │           ├── screens
+│   │           │   └── crypto_page.dart
+│   │           └── widgets
 │   ├── exchange
 │   │   ├── data
 │   │   │   ├── data_source

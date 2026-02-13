@@ -2,9 +2,11 @@ import 'package:bank_project/features/home_page/cubit/locale_cubit.dart';
 import 'package:bank_project/features/home_page/presentation/ui/widgets/home_page_button.dart';
 import 'package:bank_project/l10n/app_localization.dart';
 import 'package:bank_project/router/page_names.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,6 +42,12 @@ class HomePage extends StatelessWidget {
               onPressed: () => context.goNamed(PageNames.exchange),
             ),
             HomePageButton(
+              buttonText: text.crypto,
+              onPressed: () => kIsWeb
+                  ? _openLink('https://coinmarketcap.com/')
+                  : context.goNamed(PageNames.crypto),
+            ),
+            HomePageButton(
               buttonText: text.settings,
               onPressed: () => context.goNamed(PageNames.settings),
             ),
@@ -47,5 +55,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+Future<void> _openLink(String url) async {
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
   }
 }
