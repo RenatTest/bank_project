@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
             HomePageButton(
               buttonText: text.crypto,
               onPressed: () => kIsWeb
-                  ? _openLink('https://coinmarketcap.com/')
+                  ? openLink('https://coinmarketcap.com/')
                   : context.goNamed(PageNames.crypto),
             ),
             HomePageButton(
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Future<void> _openLink(String url) async {
+Future<void> openLink(String url) async {
   if (await canLaunchUrl(Uri.parse(url))) {
     await launchUrl(Uri.parse(url));
   }
