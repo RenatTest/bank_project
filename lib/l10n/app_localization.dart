@@ -8,6 +8,7 @@ class AppLocalization {
       'mobileBank': 'Mobile bank',
       'helloUser': 'Hello, User!',
       'exchangeRates': 'Exchange rates',
+      'crypto': 'Сryptocurrencies',
       'settings': 'Settings',
       'nightMode': 'Night mode',
     },
@@ -15,6 +16,7 @@ class AppLocalization {
       'mobileBank': 'Мобільний банк',
       'helloUser': 'Привіт, Користувач!',
       'exchangeRates': 'Курс валют',
+      'crypto': 'Криптовалюти',
       'settings': 'Налаштування',
       'nightMode': 'Нічний режим',
     },
@@ -27,6 +29,8 @@ class AppLocalization {
 
   String get exchangeRates =>
       _values[languageCode]?['exchangeRates'] ?? 'Exchange rates';
+
+  String get crypto => _values[languageCode]?['crypto'] ?? 'Сryptocurrencies';
 
   String get settings => _values[languageCode]?['settings'] ?? 'Settings';
 

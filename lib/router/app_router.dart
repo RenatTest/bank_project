@@ -1,4 +1,5 @@
 import 'package:bank_project/di/di.dart';
+import 'package:bank_project/features/crypto/presentation/ui/screens/crypto_page.dart';
 import 'package:bank_project/features/exchange/data/repository/exchange_repository.dart';
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_bloc.dart';
 import 'package:bank_project/features/exchange/presentation/bloc/exchange_event.dart';
@@ -25,6 +26,11 @@ final router = GoRouter(
                   ..add(ExchangeEventLoad()),
             child: const ExchangePage(),
           ),
+        ),
+        GoRoute(
+          path: 'crypto',
+          name: PageNames.crypto,
+          builder: (context, state) => const CryptoPage(),
         ),
         GoRoute(
           path: 'settings',
